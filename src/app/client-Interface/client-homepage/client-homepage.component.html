@@ -1,0 +1,57 @@
+<div *ngIf="allowed">
+    <nav class="flex justify-between bg-stone-800 text-white h-20 items-center">
+        <div class="flex itmes-center ml-6">
+            <p  class="text-orange-300 text-2xl">logo</p>
+            <p  class="text-orange-300 text-md pl-1 mt-2">Checkpoint</p>
+        </div>
+        
+    
+        <div *ngIf="page==0">
+            <ul class="flex">
+                <li class="cursor-pointer text-orange-300 hover:text-orange-400 ml-3 mr-8" (click)="page=0">In progress</li>
+                <li class="cursor-pointer hover:text-orange-400 ml-3 mr-8" (click)="page=1">Delivered</li>
+                <li class="cursor-pointer hover:text-orange-400 ml-3 mr-8" (click)="page=2">Account</li>
+                <li class="cursor-pointer hover:text-orange-400 ml-3 mr-8" (click)="onLogout()"><a>Logout</a></li>
+            </ul>
+        </div>
+
+        <div *ngIf="page==1">
+            <ul class="flex">
+                <li class="cursor-pointer hover:text-orange-400 ml-3 mr-8" (click)="page=0">In progress</li>
+                <li class="cursor-pointer text-orange-300 hover:text-orange-400 ml-3 mr-8" (click)="page=1">Delivered</li>
+                <li class="cursor-pointer hover:text-orange-400 ml-3 mr-8" (click)="page=2">Account</li>
+                <li class="cursor-pointer hover:text-orange-400 ml-3 mr-8" (click)="onLogout()"><a>Logout</a></li>
+            </ul>
+        </div>
+
+        <div *ngIf="page==2">
+            <ul class="flex">
+                <li class="cursor-pointer hover:text-orange-400 ml-3 mr-8" (click)="page=0">In progress</li>
+                <li class="cursor-pointer hover:text-orange-400 ml-3 mr-8" (click)="page=1">Delivered</li>
+                <li class="cursor-pointer text-orange-300 hover:text-orange-400 ml-3 mr-8" (click)="page=2">Account</li>
+                <li class="cursor-pointer hover:text-orange-400 ml-3 mr-8" (click)="onLogout()"><a>Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        
+        <div *ngIf="page==0">
+            <app-client-in-progress></app-client-in-progress>
+        </div>
+
+        <div *ngIf="page==1">
+            <app-client-delivered></app-client-delivered>
+        </div>
+
+        <div *ngIf="page==2">
+            <app-client-account></app-client-account>
+        </div>
+
+    </main>
+</div>
+
+<div *ngIf="!allowed" class="h-screen flex justify-center items-center">
+    ACCESS DENIED.
+</div>
+

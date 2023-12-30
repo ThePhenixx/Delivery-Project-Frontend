@@ -9,54 +9,35 @@ import { HttpServiceService } from '../../services/http-service.service';
 })
 export class ClientInProgressComponent implements OnInit{
 
-  allowed = false;
+  search = "";
 
-  constructor(private httpService: HttpServiceService, private router: Router){}
+  packages: {id: number, reference: string, description: string, presentLocation: string, weight: number, address: string, traject:{id: number, source: string, destination: string}, client:{uid: string, firstname: string, lastname: string, email: string, phonenumber: string}, creationDate: string, deliveryDate: string}[] = [];
+  Allpackages: {id: number, reference: string, description: string, presentLocation: string, weight: number, address: string, traject:{id: number, source: string, destination: string}, client:{uid: string, firstname: string, lastname: string, email: string, phonenumber: string}, creationDate: string, deliveryDate: string}[] = [];
 
-  onLogout():void {
-
-    localStorage.removeItem("activeToken");
-    localStorage.removeItem("uid");
-    localStorage.removeItem("firstname");
-    localStorage.removeItem("lastname");
-    localStorage.removeItem("email");
-    localStorage.removeItem("phonenumber");
-    localStorage.removeItem("role");
-
-    this.router.navigate(["login"]);
-  }
-
-  toAccount(): void{
-
-    this.router.navigate(["client-account"])
-  }
-
-  toDelivered(): void{
-
-    this.router.navigate(["client-delivered"])
-  }
-    
-
+  constructor(private httpService: HttpServiceService){};
 
   ngOnInit(): void {
-
-    if(localStorage.getItem("role") == "CLIENT"){
-      this.allowed = true;
-    }
-
-  //   const page = 0;
-  //   const pagesize = 20;
-  //   const uid = localStorage.getItem("activeToken");
-  //   const url = "http://localhost:8080/client-api/in-progress-packages/"+page+"/"+pagesize+"/"+uid;
+    const page = 0;
+    const pagesize = 40;
+    const uid = localStorage.getItem("uid");
+    const url = "http://localhost:8080/users-api/in-progress-packages/"+page+"/"+pagesize+"/"+uid;
     
-  //   this.httpService.getRequest("url").subscribe(
-  //     (response) => {
-  //       console.log(response);
-  //     },
-  //     (error) => {
-  //       console.error(error);
-  //     }
-  //   );
+    console.log(url);
+    this.httpService.getRequest(url).subscribe(
+      (response) => {
+        this.packages = response.content;
+        this.Allpackages = response.content;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
 
+  }
+
+  onSearchChange(): void{
+    this.packages = this.Allpackages.filter(item =>
+      item.reference.toLowerCase().startsWith(this.search.toLowerCase())
+    );
   }
 }

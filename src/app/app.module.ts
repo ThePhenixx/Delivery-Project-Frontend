@@ -9,7 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { PasswordRecuperationComponent } from './authentication/password-recuperation/password-recuperation.component';
 import { PasswordChangeComponent } from './authentication/password-change/password-change.component';
 import { LoginPageComponent } from './authentication/login-page/login-page.component';
-import { ClientFooterComponent } from './client-Interface/client-footer/client-footer.component';
 import { ClientInProgressComponent } from './client-Interface/client-in-progress/client-in-progress.component';
 import { AdminHomepageComponent } from './admin-Interface/admin-homepage/admin-homepage.component';
 import { AdminAddUserComponent } from './admin-Interface/admin-add-user/admin-add-user.component';
@@ -23,6 +22,7 @@ import { AdminAddTruckComponent } from './admin-Interface/admin-add-truck/admin-
 import { AdminAddTrajectComponent } from './admin-Interface/admin-add-traject/admin-add-traject.component';
 import { CheckpointSendCargoComponent } from './checkpoint-Interface/checkpoint-send-cargo/checkpoint-send-cargo.component';
 import { CheckpointReceiveCargoComponent } from './checkpoint-Interface/checkpoint-receive-cargo/checkpoint-receive-cargo.component';
+import { ClientHomepageComponent } from './client-Interface/client-homepage/client-homepage.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,6 @@ import { CheckpointReceiveCargoComponent } from './checkpoint-Interface/checkpoi
     LoginPageComponent,
     PasswordRecuperationComponent,
     PasswordChangeComponent,
-    ClientFooterComponent,
     ClientInProgressComponent,
     AdminHomepageComponent,
     AdminAddUserComponent,
@@ -44,6 +43,7 @@ import { CheckpointReceiveCargoComponent } from './checkpoint-Interface/checkpoi
     AdminAddTrajectComponent,
     CheckpointSendCargoComponent,
     CheckpointReceiveCargoComponent,
+    ClientHomepageComponent,
     
   ],
   imports: [
