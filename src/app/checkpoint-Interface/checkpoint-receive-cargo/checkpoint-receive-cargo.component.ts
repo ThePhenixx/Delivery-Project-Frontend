@@ -57,6 +57,18 @@ export class CheckpointReceiveCargoComponent implements OnInit{
       (response) => {
         alert("Cargo has been received.");
         this.truckId = "";
+        this.cargo = {id: 0,
+          packages: [{
+            id:0,
+            description: "",
+            weight: 0,
+            client: {
+              email: "",
+              phonenumber: ""
+            }
+          }],
+        };
+        this.ngOnInit();
       },
       (error) => {
         console.log(error)
