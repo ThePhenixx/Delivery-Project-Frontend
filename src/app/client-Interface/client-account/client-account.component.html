@@ -1,27 +1,32 @@
-<div *ngIf="allowed">
-    
-    <nav class="flex justify-between bg-stone-800 text-white h-20 items-center">
-        <div class="flex itmes-center ml-6">
-            <p  class="text-orange-300 text-2xl">logo</p>
-            <p  class="text-orange-300 text-md pl-1 mt-2">Client</p>
+<main>
+
+    <!-- DISPLAY DELIVERIES -->
+
+    <div class="flex justify-center items-center" style="height: 580px;">
+        <div class="border rounded-sm py-4 px-6 shadow" style="width: 750px;">
+
+            <p class="text-2xl h-5">Account: </p>
+            <div class="dropdown-divider"></div>
+                <div class="grid grid-cols-3 mt-4" style="width: 700px;">
+                    <div class="col-span-1">
+                        <p class="h-10 pl-4 pt-2 mb-3">Firstname :</p>
+                        <p class="h-10 pl-4 pt-2 mb-3">Lastname :</p>
+                        <p class="h-10 pl-4 pt-2 mb-3">Email :</p>
+                        <p class="h-10 pl-4 pt-2 mb-3">Phone number :</p>
+                        <p class="h-10 pl-4 pt-2 mb-3">Address :</p>
+                    </div>
+        
+                    <div class="flex flex-column col-span-2">
+                        <input [value]="firstname" [readonly]="true" class="rounded-sm h-10 mb-3"/>
+                        <input [value]="lastname" [readonly]="true" class="rounded-sm h-10 mb-3"/>
+                        <input [value]="email" [readonly]="true" class="rounded-sm h-10 mb-3"/>
+                        <input [value]="phonenumber" [readonly]="true" class="rounded-sm h-10 mb-3"/>
+                        <input [value]="address" [readonly]="true" class="rounded-sm h-10 mb-3"/>
+                    </div>
+                </div>
+            
+            
         </div>
+    </div>
 
-        <div>
-            <ul class="flex">
-                <li class="cursor-pointer hover:text-orange-400 mx-3" (click)="toInProgress()"><a>In Progress</a></li>
-                <li class="cursor-pointer hover:text-orange-400 mx-3" (click)="toDelivered"><a>Delivered</a></li>
-                <li class="cursor-pointer text-orange-400 hover:text-orange-400 mx-3"><a>Account</a></li>
-                <li class="cursor-pointer hover:text-orange-400 ml-3 mr-8" (click)="onLogout()"><a>Logout</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <main>
-        Account
-    </main>
-
-</div>
-
-<div *ngIf="!allowed" class="h-screen flex justify-center items-center">
-    ACCESS DENIED.
-</div>
+</main>

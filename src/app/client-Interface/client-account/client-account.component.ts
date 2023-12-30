@@ -9,38 +9,21 @@ import { HttpServiceService } from '../../services/http-service.service';
 })
 export class ClientAccountComponent implements OnInit {
 
-  allowed = false;
+  firstname = "";
+  lastname = "";
+  email = "";
+  phonenumber= "";
+  address = "";
 
   constructor(private httpService: HttpServiceService, private router: Router){}
 
-  onLogout():void {
-
-    localStorage.removeItem("activeToken");
-    localStorage.removeItem("uid");
-    localStorage.removeItem("firstname");
-    localStorage.removeItem("lastname");
-    localStorage.removeItem("email");
-    localStorage.removeItem("phonenumber");
-    localStorage.removeItem("role");
-
-    this.router.navigate(["login"]);
-  }
-    
-  toDelivered(): void{
-
-    this.router.navigate(["client-delivered"])
-  }
-
-  toInProgress(): void{
-
-    this.router.navigate(["client-in-progress"])
-  }
-
-
   ngOnInit(): void {
-
-    if(localStorage.getItem("role") ==  "CLIENT"){
-      this.allowed = true;
-    }
+    
+    this.firstname = localStorage.getItem("firstname")||"";
+    this.lastname = localStorage.getItem("lastname")||"";
+    this.email = localStorage.getItem("email")||"";
+    this.phonenumber = localStorage.getItem("phonenumber")||"";
+    this.address = localStorage.getItem("address")||"";
   }
+
 }

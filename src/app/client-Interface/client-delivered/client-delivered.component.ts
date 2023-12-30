@@ -9,40 +9,30 @@ import { HttpServiceService } from '../../services/http-service.service';
 })
 export class ClientDeliveredComponent implements OnInit {
 
-  allowed = false;
+  search = "";
+
+  packages: {id: number, reference: string, description: string, weight: number, address: string, traject:{id: number, source: string, destination: string}, client:{uid: string, firstname: string, lastname: string, email: string, phonenumber: string}, creationDate: string, deliveryDate: string}[] = [];
+  Allpackages: {id: number, reference: string, description: string, weight: number, address: string, traject:{id: number, source: string, destination: string}, client:{uid: string, firstname: string, lastname: string, email: string, phonenumber: string}, creationDate: string, deliveryDate: string}[] = [];
 
   constructor(private httpService: HttpServiceService, private router: Router){}
-
-  onLogout():void {
-
-    localStorage.removeItem("activeToken");
-    localStorage.removeItem("uid");
-    localStorage.removeItem("firstname");
-    localStorage.removeItem("lastname");
-    localStorage.removeItem("email");
-    localStorage.removeItem("phonenumber");
-    localStorage.removeItem("role");
-
-    this.router.navigate(["login"]);
-  }
-    
-  toAccount(): void{
-
-    this.router.navigate(["client-account"])
-  }
-
-  toInProgress(): void{
-
-    this.router.navigate(["client-in-progress"])
-  }
-
-
+  
   ngOnInit(): void {
-
-    if(localStorage.getItem("role") == "CLIENT"){
-      this.allowed = true;
+    const url1 = "http://localhost:8080/package-api/get-delevired-packages/0/20/all"
+    this.httpService.getRequest(url1).subscribe(
+      (response) => {
+        this.packages = response.content;
+        this.Allpackages = response.content;
+        console.log(response);
+      },
+      (error) => {
+        console.log(error)
+      }
+    );
     }
-  }
 
-
+    onSearchChange(): void{
+      this.packages = this.Allpackages.filter(item =>
+        item.reference.toLowerCase().startsWith(this.search.toLowerCase())
+      );
+    }
 }

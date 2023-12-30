@@ -43,6 +43,7 @@ export class LoginPageComponent implements OnInit{
     if(this.email.length>10 && this.password.length>5){
       this.postData(request).subscribe(
         (response) => {
+
           // Handle the response from the server
           const jsonResponse = JSON.stringify(response, null, 2);
           localStorage.setItem("activeToken", response.activeToken)
@@ -51,10 +52,11 @@ export class LoginPageComponent implements OnInit{
           localStorage.setItem("lastname", response.lastname)
           localStorage.setItem("email", response.email)
           localStorage.setItem("phonenumber", response.phonenumber)
+          localStorage.setItem("address", response.address)
           localStorage.setItem("role", response.role)
             
           if(response.role == "CLIENT"){
-            this.router.navigate(['client-in-progress']);
+            this.router.navigate(['client-homepage']);
           }
   
           else if(response.role == "ADMIN"){

@@ -1,31 +1,36 @@
-<div *ngIf="allowed">
-    
-    <nav class="flex justify-between bg-stone-800 text-white h-20 items-center">
+<main>
 
-        <div class="flex itmes-center ml-6">
-            <p  class="text-orange-300 text-2xl">logo</p>
-            <p  class="text-orange-300 text-md pl-1 mt-2">Client</p>
-        </div>
-        <div>
-            <input class="rounded-lg w-60 pl-4 h-10 text-black" placeholder="Search"/>
-        </div>
+    <!-- DISPLAY DELIVERIES -->
 
-        <div>
+    <div class=" border rounded-lg shadow m-2 min-h-screen">
+        <div class="flex justify-between  my-2 mx-2">
+            <div>
+                <input class="rounded-lg w-60 pl-4 h-10 text-black mr-2" placeholder="Search"  [(ngModel)]="search" (ngModelChange)="onSearchChange()"/>
+            </div>
+        </div>
+        <div class="dropdown-divider"></div>
+        <div class="flex flex-column items-center my-4 text-xs divide-y devide-slate-700">
             <ul class="flex">
-                <li class="cursor-pointer hover:text-orange-400 mx-3" (click)="toInProgress()"><a>In Progress</a></li>
-                <li class="cursor-pointer text-orange-400 hover:text-orange-400 mx-3"><a>Delivered</a></li>
-                <li class="cursor-pointer hover:text-orange-400 mx-3" (click)="toAccount()"><a>Account</a></li>
-                <li class="cursor-pointer hover:text-orange-400 ml-3 mr-8" (click)="onLogout()"><a>Logout</a></li>
+                <li class="w-24 bg-green-300 h-8 text-center pt-2 rounded-tl-lg">Reference</li>
+                <li class="w-96 bg-green-500 h-8 text-center pt-2 ">Description</li>
+                <li class="w-20 bg-green-300 h-8 text-center pt-2 ">Weigth</li>
+                <li class="w-48 bg-green-500 h-8 text-center pt-2 ">Sent the</li>
+                <li class="w-48 bg-green-300 h-8 text-center pt-2 ">Destination</li>
+                <li class="w-80 bg-green-500 h-8 text-center pt-2 ">Address</li>
+                <li class="w-48 bg-green-300 h-8 text-center pt-2  rounded-tr-lg">Dilivered</li>
+                
+                
+            </ul>
+            <ul *ngFor="let pack of packages" class="flex">
+                <li class="w-24 bg-slate-300 h-8 pl-2 pt-2">{{pack.reference}}</li>
+                <li class="w-96 bg-slate-100 h-8 pl-2 pt-2 ">{{pack.description}}</li>
+                <li class="w-20 bg-slate-300 h-8 pl-2 pt-2 ">{{pack.weight + " Kg"}}</li>
+                <li class="w-48 bg-slate-100 h-8 pl-2 pt-2 text-center">{{pack.creationDate.slice(0,10)}}</li>
+                <li class="w-48 bg-slate-300 h-8 pl-2 pt-2 text-center">{{pack.traject.destination}}</li>
+                <li class="w-80 bg-slate-100 h-8 pl-2 pt-2 ">{{pack.address}}</li>
+                <li class="w-48 bg-slate-300 h-8 pl-2 pt-2 text-center">{{pack.deliveryDate.slice(0,10)}}</li>
             </ul>
         </div>
-    </nav>
+    </div>
 
-    <main>
-        Delivered
-    </main>
-
-</div>
-
-<div *ngIf="!allowed" class="h-screen flex justify-center items-center">
-    ACCESS DENIED.
-</div>
+</main>

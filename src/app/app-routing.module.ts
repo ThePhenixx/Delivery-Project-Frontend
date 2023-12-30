@@ -7,6 +7,7 @@ import { PasswordRecuperationComponent } from './authentication/password-recuper
 import { CheckpointDeliveriesComponent } from './checkpoint-Interface/checkpoint-home/checkpoint-deliveries.component';
 import { ClientAccountComponent } from './client-Interface/client-account/client-account.component';
 import { ClientDeliveredComponent } from './client-Interface/client-delivered/client-delivered.component';
+import { ClientHomepageComponent } from './client-Interface/client-homepage/client-homepage.component';
 import { ClientInProgressComponent } from './client-Interface/client-in-progress/client-in-progress.component';
 
 
@@ -18,7 +19,7 @@ const routes: Routes = [
 
 
   //            CLIENT LINKS
-  {path: "client-in-progress", component: ClientInProgressComponent},
+  {path: "client-homepage", component: ClientHomepageComponent},
   {path: "client-delivered", component: ClientDeliveredComponent},
   {path: "client-account", component: ClientAccountComponent},
 
