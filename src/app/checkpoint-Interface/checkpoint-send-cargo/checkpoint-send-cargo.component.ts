@@ -38,7 +38,6 @@ export class CheckpointSendCargoComponent {
     this.httpService.getRequest(url2).subscribe(
       (response) => {
         this.trajects = response.content;
-        console.log(response)
       },
       (error) => {
         console.log(error)

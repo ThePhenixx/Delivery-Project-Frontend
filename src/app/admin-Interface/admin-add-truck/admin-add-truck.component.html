@@ -22,7 +22,7 @@
                     <li class="w-80 bg-slate-300 h-8 flex justify-between">
                         <p *ngIf="truck.driver!=null" class="pt-2 pl-2">{{truck.driver.firstname +" "+ truck.driver.lastname }}</p>
                         <p *ngIf="truck.driver==null" class="pt-2 pl-2">Not assigned</p>
-                        <select class="w-8 h-10"  [(ngModel)]="option" (change)="onTruckUpdate(truck)">
+                        <select class="w-8 h-8"  [(ngModel)]="option" (change)="onTruckUpdate(truck)">
                             <option value="0">Not assigned</option>
                             <option *ngFor="let driver of drivers" [ngValue]="driver.id">{{driver.firstname + " " + driver.lastname }}</option>
                         </select>

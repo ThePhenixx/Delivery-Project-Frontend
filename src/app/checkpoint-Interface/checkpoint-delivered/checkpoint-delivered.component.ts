@@ -44,6 +44,8 @@ export class CheckpointDeliveredComponent {
   };
 
   onSearchChange(): void{
-    
+    this.packages = this.Allpackages.filter(item =>
+      item.reference.toLowerCase().startsWith(this.search.toLowerCase())
+    );
   }
 }
